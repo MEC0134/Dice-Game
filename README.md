@@ -1,4 +1,4 @@
 # Dice-Game
 
 
-## Simple Two - Player Game with a pair of dice. 
+### Simple Two - Player Game with a pair of dice. 
