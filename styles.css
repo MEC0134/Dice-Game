@@ -75,7 +75,7 @@ footer {
 }
 
 
-/* Responsive  */
+/* Responsive Button  */
 
 @media (min-width: 1200px) {
 
@@ -100,7 +100,7 @@ footer {
 
   .btn-play {
 
-    left: 30%;
+    left: 22.5%;
   }
 
 }
