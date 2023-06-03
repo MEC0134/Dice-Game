@@ -1,78 +1,68 @@
-// Create a random number variable to represent the players dice 
-var randomNumber1 = Math.floor(Math.random()*6 + 1);
-var randomNumber2 = Math.floor(Math.random()*6 + 1);
+var heading = document.querySelector('#my-heading');
 
+// Create an array to store the image file paths
+var diceImages = [
+    "images/dice1.png",
+    "images/dice2.png",
+    "images/dice3.png",
+    "images/dice4.png",
+    "images/dice5.png",
+    "images/dice6.png"
+];
 
-// Create a variable for each image file 
-var img1 = "images/dice1.png";
-var img2 = "images/dice2.png";
-var img3 = "images/dice3.png";
-var img4 = "images/dice4.png";
-var img5 = "images/dice5.png";
-var img6 = "images/dice6.png";
+// Set Default content for heading 
+document.addEventListener('DOMContentLoaded', () => {
+    heading.textContent = "Click Button To Play!";
+});
 
+// Function to handle play again btn 
+function playGame() {
+    // Create a random number variable to represent the players' dice 
+    var randomNumber1 = getRandomNumber();
+    var randomNumber2 = getRandomNumber();
 
-// Assign new image to the img1 depending on the number we get from randomNumber1 variable
+    var img1 = document.querySelector(".img1");
+    var img2 = document.querySelector(".img2");
 
-switch(randomNumber1) 
-{
-    case 1:
-        document.querySelector(".img1").setAttribute("src", img1);
-        break;
-    case 2:
-        document.querySelector(".img1").setAttribute("src", img2);
-        break;
-    case 3:
-        document.querySelector(".img1").setAttribute("src", img3);
-        break;
-    case 4:
-        document.querySelector(".img1").setAttribute("src", img4);
-        break;
-    case 5:
-        document.querySelector(".img1").setAttribute("src", img5);
-        break;
-    case 6:
-        document.querySelector(".img1").setAttribute("src", img6);
-        break;
-}
+    // Remove the "roll" class to reset the animation
+    img1.classList.remove("roll");
+    img2.classList.remove("roll");
 
-// Assign new image to the img1 depending on the number we get from randomNumber2 variable
+    // Force a reflow to ensure the class is removed before re-adding it
+    void img1.offsetWidth;
+    void img2.offsetWidth;
 
-switch(randomNumber2) 
-{
-    case 1:
-        document.querySelector(".img2").setAttribute("src", img1);
-        break;
-    case 2:
-        document.querySelector(".img2").setAttribute("src", img2);
-        break;
-    case 3:
-        document.querySelector(".img2").setAttribute("src", img3);
-        break;
-    case 4:
-        document.querySelector(".img2").setAttribute("src", img4);
-        break;
-    case 5:
-        document.querySelector(".img2").setAttribute("src", img5);
-        break;
-    case 6:
-        document.querySelector(".img2").setAttribute("src", img6);
-        break;
+    // Add the "roll" class to initiate the rolling animation
+    img1.classList.add("roll");
+    img2.classList.add("roll");
+
+    // Wait for the rolling animation to finish
+    setTimeout(function () {
+        // Remove the "roll" class to stop the animation
+        img1.classList.remove("roll");
+        img2.classList.remove("roll");
+
+        // Assign new image to img1 and img2 based on the random numbers
+        img1.setAttribute("src", diceImages[randomNumber1 - 1]);
+        img2.setAttribute("src", diceImages[randomNumber2 - 1]);
+
+        // Update the h1 tag depending on which player won
+        if (randomNumber1 > randomNumber2) {
+            heading.textContent = "Player 1 Won!";
+        } else if (randomNumber1 < randomNumber2) {
+            heading.textContent = "Player 2 Won!";
+        } else {
+            heading.textContent = "It is a tie!";
+        }
+    }, 1000); // Adjust the timeout value to match the duration of the rolling animation
 }
 
 
+// Function to generate a random number between 1 and 6
+function getRandomNumber() {
+    return Math.floor(Math.random() * 6) + 1;
+}
 
-// Update the h1 tag depending on which player won
 
-if(randomNumber1 > randomNumber2)
-{
-    document.querySelector("h1").textContent = "Player 1 Won!";
-}
-else if(randomNumber2 > randomNumber1)
-{
-    document.querySelector("h1").textContent = "Player 2 Won!";
-}
-else
-{
-    document.querySelector("h1").textContent = "It is a tie!";
-}
+var viewportWidth = window.innerWidth;
+console.log(viewportWidth);
