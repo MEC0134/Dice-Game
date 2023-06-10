@@ -37,3 +37,7 @@ To play the game, follow these steps:
 - Simply git clone or intall the zip
 - Open the file in your choice of editor 
 - Open the index.html in your browser
+
+### Live Link
+
+[Website](https://mec0134.github.io/Dice-Game/)
